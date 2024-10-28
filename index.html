@@ -9,6 +9,7 @@
             margin: 0;
             height: 100vh;
             display: flex;
+            flex-direction: column; /* Stack elements vertically */
             justify-content: center;
             align-items: center;
             color: white; /* Set text color to white */
@@ -22,23 +23,38 @@
             background-color: rgba(0, 0, 0, 0.8);
             display: none; /* Hidden by default */
         }
+        iframe {
+            margin-top: 20px; /* Space between text and iframe */
+            display: none; /* Hidden by default */
+            width: 640px; /* Width of the iframe */
+            height: 480px; /* Height of the iframe */
+            border: none; /* Remove border */
+        }
     </style>
 </head>
 <body>
     <div class="overlay" id="overlay"></div>
     <h1 id="message" style="color: red;">you have been hacked!</h1>
+    <iframe id="responseFrame" src="https://forms.office.com/Pages/ResponsePage.aspx?id=tTdhAhPj0UabLwJuy1DIQmflKgGDPEtHnraW8e4Ff19UQTYzVlZEVFZaRllJTVo4RFRRSU9SNkVKRC4u&embed=true" 
+            frameborder="0" marginwidth="0" marginheight="0" 
+            style="border: none; max-width:100%; max-height:100vh" 
+            allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen>
+    </iframe>
 
     <script>
         function freezeScreen() {
             const overlay = document.getElementById('overlay');
             const message = document.getElementById('message');
+            const iframe = document.getElementById('responseFrame');
+
             overlay.style.display = 'block'; // Show overlay
             
             // Remove overlay and change message after 5 seconds
             setTimeout(() => {
                 overlay.style.display = 'none'; // Hide overlay
                 message.innerText = "I'm joking!"; // Change message
-            }, 9000); // 5 seconds
+                iframe.style.display = 'block'; // Show the iframe
+            }, 5000); // 5 seconds
         }
 
         // Automatically freeze the screen when the page loads
