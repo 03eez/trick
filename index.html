@@ -11,6 +11,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            color: white; /* Set text color to white */
         }
         .overlay {
             position: fixed;
@@ -25,16 +26,19 @@
 </head>
 <body>
     <div class="overlay" id="overlay"></div>
-    <h1 style="color: white;">Scan to Freeze the Screen!</h1>
+    <h1 id="message" style="color: red;">you have been hacked!</h1>
 
     <script>
         function freezeScreen() {
             const overlay = document.getElementById('overlay');
+            const message = document.getElementById('message');
             overlay.style.display = 'block'; // Show overlay
-            // Remove overlay after 5 seconds
+            
+            // Remove overlay and change message after 5 seconds
             setTimeout(() => {
                 overlay.style.display = 'none'; // Hide overlay
-            }, 5000); // Change duration as needed
+                message.innerText = "I'm joking!"; // Change message
+            }, 5000); // 5 seconds
         }
 
         // Automatically freeze the screen when the page loads
